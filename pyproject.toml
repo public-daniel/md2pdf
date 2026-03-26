@@ -1,0 +1,87 @@
+[project]
+name = "md2pdf"
+version = "0.1.0"
+description = "Beautiful Markdown to PDF conversion with Typst"
+readme = "README.md"
+authors = [
+    { name = "Public Daniel", email = "daniel@daniel.pub" }
+]
+requires-python = ">=3.13"
+dependencies = [
+    "click>=8.1",
+]
+
+[project.scripts]
+md2pdf = "md2pdf.cli:main"
+
+[build-system]
+requires = ["uv_build>=0.8.0,<0.9"]
+build-backend = "uv_build"
+
+[dependency-groups]
+dev = [
+    "pre-commit>=4.2.0",
+    "pytest>=8.4.1",
+    "ruff>=0.12.3",
+    "ty>=0.0.1a19",
+]
+
+[tool.ruff]
+preview = true
+target-version = "py313"
+exclude = [".git", ".pytest_cache", ".ruff_cache", ".venv"]
+line-length = 110
+indent-width = 4
+
+[tool.ruff.lint]
+select = [
+    "F",
+    "E",
+    "I",
+    "W",
+    "N",
+    "UP",
+    "PL",
+    "FLY",
+    "NPY",
+    "PERF",
+    "FURB",
+    "RUF",
+]
+ignore = [
+    "PLR0913", # Ignore: Too many arguments in function definition.
+    "PLR0917", # Ignore: Too many positional arguments in function call.
+    "PLR2004", # Ignore: Magic numbers / constants
+    "PLR0915", # Ignore: Too many statements
+    "PLR0912", # Ignore: Too many branches
+    "PLR1702", # Ignore: Too many nested blocks
+]
+fixable = ["ALL"]
+unfixable = []
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+skip-magic-trailing-comma = false
+line-ending = "auto"
+
+[tool.pytest.ini_options]
+minversion = "8.0"
+testpaths = ["tests"]
+addopts = [
+    "-v",
+    "--tb=short",
+    "--color=yes",
+    "-ra",
+    "--strict-markers",
+    "--strict-config",
+    "--durations=10",
+    "--import-mode=importlib",
+]
+filterwarnings = [
+    "error",
+    "ignore::DeprecationWarning",
+]
+python_files = ["test_*.py", "*_test.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
