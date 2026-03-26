@@ -17,7 +17,7 @@ TEMPLATES = ("document", "print")
     "-t",
     "--template",
     type=click.Choice(TEMPLATES, case_sensitive=False),
-    default="document",
+    default="print",
     show_default=True,
     help="Typographic template.",
 )
