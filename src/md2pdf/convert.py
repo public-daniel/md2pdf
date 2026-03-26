@@ -37,7 +37,8 @@ def convert(
     if not tmpl.is_file():
         raise FileNotFoundError(f"Template not found: {template}")
 
-    highlight_style = "tango" if template == "document" else "monochrome"
+    highlight_styles = {"document": "tango", "print": "monochrome", "dark": "breezedark"}
+    highlight_style = highlight_styles.get(template, "tango")
 
     with tempfile.TemporaryDirectory() as tmp:
         typ_file = Path(tmp) / "output.typ"

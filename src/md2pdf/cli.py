@@ -7,7 +7,7 @@ import click
 
 from .convert import convert
 
-TEMPLATES = ("document", "print")
+TEMPLATES = ("document", "print", "dark")
 
 
 @click.command()
