@@ -1,6 +1,6 @@
 // md2pdf — dark template
 // Optimized for screen reading in low-light environments.
-// Dark background, light text. Equity Text A body, Helvetica Neue headings,
+// Dark background, light text. Equity OT A body, Helvetica Neue headings,
 // JetBrains Mono code, colored links, parskip spacing, dark syntax highlighting.
 
 #let horizontalrule = align(center)[
@@ -100,7 +100,7 @@ $endif$
 
   // ── Body text ──────────────────────────────────────────────────────
   set text(
-    font: "Equity Text A",
+    font: "Equity OT A",
     size: 11pt,
     fill: fg,
     lang: lang,

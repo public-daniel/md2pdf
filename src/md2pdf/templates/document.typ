@@ -1,6 +1,6 @@
 // md2pdf — document template
 // Optimized for polished digital PDFs: sharing, screen reading, archival.
-// Equity Text A body, Helvetica Neue headings, JetBrains Mono code,
+// Equity OT A body, Helvetica Neue headings, JetBrains Mono code,
 // colored links, parskip spacing, color syntax highlighting.
 
 #let horizontalrule = align(center)[
@@ -69,7 +69,7 @@ $endif$
 
   // ── Body text ──────────────────────────────────────────────────────
   set text(
-    font: "Equity Text A",
+    font: "Equity OT A",
     size: 11pt,
     lang: lang,
     region: region,

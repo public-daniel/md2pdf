@@ -1,6 +1,6 @@
 // md2pdf — print template
 // Optimized for long-form reading on paper.
-// Equity Text A body + headings, Equity Caps A for small caps,
+// Equity OT A body + headings (small caps via OpenType features),
 // JetBrains Mono code, justified + hyphenation, first-line indent,
 // wide margins, monochrome code, links as footnotes.
 
@@ -67,7 +67,7 @@ $endif$
     header: context {
       let pg = counter(page).get().first()
       if pg > 1 {
-        set text(8.5pt, fill: subtle, font: "Equity Caps A")
+        set text(8.5pt, fill: subtle, font: "Equity OT A", features: ("smcp",))
         if calc.rem(pg, 2) == 0 {
           // Verso (even): page number left, title right
           counter(page).display("1")
@@ -93,7 +93,7 @@ $endif$
 
   // ── Body text ──────────────────────────────────────────────────────
   set text(
-    font: "Equity Text A",
+    font: "Equity OT A",
     size: 11pt,
     lang: lang,
     region: region,
@@ -123,7 +123,7 @@ $endif$
     pagebreak(weak: true)
     v(2.4em)
     block(below: 0.8em)[
-      #set text(18pt, weight: "bold", font: "Equity Text A", tracking: -0.015em)
+      #set text(18pt, weight: "bold", font: "Equity OT A", tracking: -0.015em)
       #it.body
     ]
   }
@@ -131,7 +131,7 @@ $endif$
   show heading.where(level: 2): it => {
     v(1.8em)
     block(below: 0.7em)[
-      #set text(13.5pt, weight: "bold", font: "Equity Text A", tracking: -0.01em)
+      #set text(13.5pt, weight: "bold", font: "Equity OT A", tracking: -0.01em)
       #it.body
     ]
   }
@@ -139,7 +139,7 @@ $endif$
   show heading.where(level: 3): it => {
     v(1.4em)
     block(below: 0.5em)[
-      #set text(11.5pt, weight: "bold", style: "italic", font: "Equity Text A")
+      #set text(11.5pt, weight: "bold", style: "italic", font: "Equity OT A")
       #it.body
     ]
   }
@@ -147,7 +147,7 @@ $endif$
   show heading.where(level: 4): it => {
     v(1.1em)
     block(below: 0.4em)[
-      #set text(11pt, weight: "bold", font: "Equity Text A")
+      #set text(11pt, weight: "bold", font: "Equity OT A")
       #it.body
     ]
   }
@@ -225,7 +225,7 @@ $endif$
 
   // ── Tables ─────────────────────────────────────────────────────────
   show table: set text(9.5pt)
-  show table.cell.where(y: 0): set text(weight: "bold", font: "Equity Caps A")
+  show table.cell.where(y: 0): set text(weight: "bold", font: "Equity OT A", features: ("smcp",))
   set table(
     inset: (x: 0.6em, y: 0.45em),
     stroke: (x: none, y: 0.5pt + border),
@@ -251,7 +251,7 @@ $endif$
   if title != none {
     v(1fr)  // push title to ~1/3 page height
     v(1fr)
-    text(24pt, weight: "bold", font: "Equity Text A", tracking: -0.015em)[#title]
+    text(24pt, weight: "bold", font: "Equity OT A", tracking: -0.015em)[#title]
     if subtitle != none {
       v(0.3em)
       text(13pt, style: "italic", fill: muted)[#subtitle]
@@ -259,7 +259,7 @@ $endif$
     if authors.len() > 0 {
       v(0.8em)
       let names = authors.map(a => a.name).join(", ")
-      text(11pt, fill: muted, font: "Equity Caps A", tracking: 0.05em)[#names]
+      text(11pt, fill: muted, font: "Equity OT A", features: ("smcp",), tracking: 0.05em)[#names]
     }
     if date != none {
       v(0.3em)
