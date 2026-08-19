@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+#MISE description="Update pre-commit hook definitions to their latest versions"
+set -euo pipefail
+
+repository_root="$(cd "$(dirname "$0")/.." && pwd)"
+cd "$repository_root"
+
+uv run pre-commit autoupdate
+echo "Hooks updated. Review changes in .pre-commit-config.yaml and commit them."

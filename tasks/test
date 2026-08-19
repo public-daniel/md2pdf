@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+#MISE description="Run the test suite"
+set -euo pipefail
+
+repository_root="$(cd "$(dirname "$0")/.." && pwd)"
+cd "$repository_root"
+
+uv run pytest

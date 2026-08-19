@@ -17,3 +17,6 @@ build/
 
 # Tool-specific
 .claude/
+
+# mise — machine-local overrides, never committed
+mise.local.toml

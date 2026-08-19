@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+#MISE description="Apply formatting and lint auto-fixes"
+#MISE alias="format"
+set -euo pipefail
+
+repository_root="$(cd "$(dirname "$0")/.." && pwd)"
+cd "$repository_root"
+
+uv run ruff format src
+uv run ruff check --fix src

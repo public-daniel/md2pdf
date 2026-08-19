@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+#MISE description="Remove caches and build artifacts"
+set -euo pipefail
+
+repository_root="$(cd "$(dirname "$0")/.." && pwd)"
+cd "$repository_root"
+
+rm -rf .ruff_cache .pytest_cache .uv_cache .coverage dist
+find . -type d -name "__pycache__" -prune -exec rm -rf {} +
+find . -type f -name "*.pyc" -delete

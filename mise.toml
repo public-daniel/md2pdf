@@ -1,0 +1,17 @@
+# Pinned dev toolchain: `mise install` converges. Python itself is uv's
+# responsibility (.python-version + `uv sync`), so it is deliberately absent
+# here — one authority per layer. Everything Python runs through `uv run`;
+# the venv is never activated.
+[tools]
+uv = "0.12.5"
+shellcheck = "0.11.0"
+
+# Verbs live in tasks/ as plain executables, matching the SI repositories.
+[task_config]
+includes = ["tasks"]
+
+# No .envrc ever existed here — [env] only puts the uv-managed venv's entry
+# point (the `md2pdf` CLI, per [project.scripts]) on PATH by bare name, as
+# the README documents. Tasks still run Python through `uv run`.
+[env]
+_.path = ["{{config_root}}/.venv/bin"]

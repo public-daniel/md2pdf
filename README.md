@@ -40,3 +40,28 @@ author: Your Name
 date: March 2026
 ---
 ```
+
+## Development
+
+- [mise](https://mise.jdx.dev/) — pins the toolchain (`mise.toml`), puts the
+  `md2pdf` CLI on PATH inside the repo, and runs the task verbs in `tasks/`
+- [uv](https://docs.astral.sh/uv/) — Python toolchain (pinned by mise;
+  interpreter pinned in `.python-version`)
+
+```bash
+mise trust      # one-time: allow this repository's mise.toml
+mise run setup  # install pinned tools, sync .venv from uv.lock, install git hooks
+```
+
+### Daily commands
+
+| Command                | What it does                                                    |
+| ---------------------- | --------------------------------------------------------------- |
+| `mise run tidy`        | Format + lint, auto-fixing                                      |
+| `mise ci`              | Full read-only gate: format check, lint, ty, tests (pre-commit hook) |
+| `mise run test`        | Test suite only                                                 |
+| `mise run deps-update` | Re-lock dependencies to latest allowed versions, then sync      |
+
+`mise tasks` lists every verb. Python is linted/formatted by **ruff**,
+type-checked by **ty**. Hooks live in `.pre-commit-config.yaml` and are
+installed by `mise run setup`.

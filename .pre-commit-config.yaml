@@ -12,15 +12,10 @@ repos:
 
   - repo: local
     hooks:
-      - id: just-hook-checks
-        name: Run Just pre-commit checks
-        entry: just tidy
+      # The full gate — the same thing CI would run (this repo has no
+      # workflows yet). mise is the canonical interface; verbs live in tasks/.
+      - id: mise-ci
+        name: mise ci
+        entry: mise ci
         language: system
         pass_filenames: false
-
-      - id: just-test-push
-        name: Run tests on push
-        entry: just test
-        language: system
-        pass_filenames: false
-        stages: [pre-push]

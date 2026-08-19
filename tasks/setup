@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+#MISE description="Converge the dev environment (tools, deps, git hooks)"
+# A fresh clone runs `mise trust` first; mise refuses to run any task
+# until the config is trusted.
+set -euo pipefail
+
+repository_root="$(cd "$(dirname "$0")/.." && pwd)"
+cd "$repository_root"
+
+mise install
+uv sync
+uv run pre-commit install --install-hooks

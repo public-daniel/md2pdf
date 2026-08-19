@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+#MISE description="Run the complete local gate"
+set -euo pipefail
+
+task_directory="$(cd "$(dirname "$0")" && pwd)"
+"$task_directory/check"
+"$task_directory/test"
+echo "All CI checks passed."

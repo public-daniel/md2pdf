@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+#MISE description="Verify formatting, linting, and types without modifying files"
+#MISE alias="verify"
+set -euo pipefail
+
+repository_root="$(cd "$(dirname "$0")/.." && pwd)"
+cd "$repository_root"
+
+shellcheck tasks/*
+
+uv run ruff format --check src
+uv run ruff check src
+uv run ty check src

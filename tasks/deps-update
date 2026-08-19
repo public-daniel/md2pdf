@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+#MISE description="Update dependencies to their latest allowed versions and sync"
+set -euo pipefail
+
+repository_root="$(cd "$(dirname "$0")/.." && pwd)"
+cd "$repository_root"
+
+uv lock
+uv sync
